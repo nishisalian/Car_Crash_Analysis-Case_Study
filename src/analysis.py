@@ -26,7 +26,7 @@ class CarCrashAnalysis:
             int: The count of crashes in which number of males killed are greater than 2
         """
 
-        df = self.primary_person_use.filter((F.col("PRSN_GNDR_ID") == "MALE") & (F.col("DEATH_CNT") > 0))\
+        df = self.primary_person_df.filter((F.col("PRSN_GNDR_ID") == "MALE") & (F.col("DEATH_CNT") > 0))\
             .groupBy("CRASH_ID")\
             .agg(F.sum("DEATH_CNT").alias("male_death_count"))\
             .filter(F.col("male_death_count") > 2)
