@@ -50,7 +50,11 @@ def write_output(df, file_path, write_format):
     :return: None
     """
     try:
+
         df.coalesce(1).write.format(write_format).mode("overwrite").option("header", "true").save(file_path)
         print(f"Data written to {file_path} in {write_format} format.")
     except Exception as e:
         print(f"Error writing data to {file_path}: {e}")
+
+
+

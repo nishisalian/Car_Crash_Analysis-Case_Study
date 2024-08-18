@@ -9,14 +9,14 @@ os.environ['PYSPARK_PYTHON'] = sys.executable
 os.environ['PYSPARK_DRIVER_PYTHON'] = sys.executable
 
 
-def main_analysis(car_crash_analysis_object: CarCrashAnalysis, output_file_paths: str, file_format: str) -> None:
-
+# def main_analysis(car_crash_analysis_object: CarCrashAnalysis, output_file_paths: str, file_format: str) -> None:
+def main_analysis(car_crash_analysis_object: CarCrashAnalysis, output_file_paths: str) -> None:
     print("Car Crash Analysis - Results\n")
     # 1. Find the number of crashes (accidents) in which number of males killed are greater than 2?
     print(
         "1. ",
         car_crash_analysis_object.count_male_accidents(
-          output_file_paths.get(1), file_format.get("write_format")
+          output_file_paths.get(1)
         )
     )
 
@@ -24,7 +24,7 @@ def main_analysis(car_crash_analysis_object: CarCrashAnalysis, output_file_paths
     print(
         "2. ",
         car_crash_analysis_object.count_2_wheeler_accidents(
-          output_file_paths.get(2), file_format.get("write_format")
+          output_file_paths.get(2)
         )
     )
 
@@ -33,7 +33,7 @@ def main_analysis(car_crash_analysis_object: CarCrashAnalysis, output_file_paths
     print(
         "3. ",
         car_crash_analysis_object.top_5_vehicle_makes_for_fatal_crashes_without_airbags(
-          output_file_paths.get(3), file_format.get("write_format")
+          output_file_paths.get(3)
         )
     )
 
@@ -41,7 +41,7 @@ def main_analysis(car_crash_analysis_object: CarCrashAnalysis, output_file_paths
     print(
         "4. ",
         car_crash_analysis_object.count_hit_and_run_with_valid_licenses(
-          output_file_paths.get(4), file_format.get("write_format")
+          output_file_paths.get(4)
         )
     )
 
@@ -49,7 +49,7 @@ def main_analysis(car_crash_analysis_object: CarCrashAnalysis, output_file_paths
     print(
         "5. ",
         car_crash_analysis_object.get_state_with_no_female_accident(
-          output_file_paths.get(5), file_format.get("write_format")
+          output_file_paths.get(5)
         )
     )
 
@@ -57,14 +57,14 @@ def main_analysis(car_crash_analysis_object: CarCrashAnalysis, output_file_paths
     print(
         "6. ",
         car_crash_analysis_object.get_top_vehicle_contributing_to_injuries(
-            output_file_paths.get(6), file_format.get("write_format")
+            output_file_paths.get(6)
         )
     )
 
     # 7. For all the body styles involved in crashes, mention the top ethnic user group of each unique body style
     print("7. ")
     car_crash_analysis_object.get_top_ethnic_ug_crash_for_each_body_style(
-        output_file_paths.get(7), file_format.get("write_format")
+        output_file_paths.get(7)
     ).show(truncate=False)
 
     # 8. Among the crashed cars, what are the Top 5 Zip Codes with the highest number of crashes with alcohol as the
@@ -72,7 +72,7 @@ def main_analysis(car_crash_analysis_object: CarCrashAnalysis, output_file_paths
     print(
         "8. ",
         car_crash_analysis_object.get_top_5_zip_codes_with_alcohols_as_cf_for_crash(
-            output_file_paths.get(8), file_format.get("write_format")
+            output_file_paths.get(8)
         )
     )
 
@@ -81,7 +81,7 @@ def main_analysis(car_crash_analysis_object: CarCrashAnalysis, output_file_paths
     print(
         "9. ",
         car_crash_analysis_object.get_crash_ids_with_no_damage(
-            output_file_paths.get(9), file_format.get("write_format")
+            output_file_paths.get(9)
         )
     )
 
@@ -91,7 +91,7 @@ def main_analysis(car_crash_analysis_object: CarCrashAnalysis, output_file_paths
     print(
         "10. ",
         car_crash_analysis_object.get_top_5_vehicle_brand(
-            output_file_paths.get(10), file_format.get("write_format")
+            output_file_paths.get(10)
         )
     )
 
@@ -109,10 +109,10 @@ if __name__ == '__main__':
 
     config = read_yaml(config_file_name)
     output_file_path = config.get("OUTPUT_PATH")
-    output_file_format = config.get("FILE_FORMAT")
+    # output_file_format = config.get("FILE_FORMAT")
 
     car_crash_analysis = CarCrashAnalysis(spark, config)
 
-    main_analysis(car_crash_analysis, output_file_path, output_file_format)
+    main_analysis(car_crash_analysis, output_file_path)
 
     spark.stop()
