@@ -1,0 +1,23 @@
+INPUT_FILENAME:
+  Charges: resources/raw_data/Charges_use.csv
+  Damages: resources/raw_data/Damages_use.csv
+  Endorse: resources/raw_data/Endorse_use.csv
+  Primary_Person: resources/raw_data/Primary_Person_use.csv
+  Units: resources/raw_data/Units_use.csv
+  Restrict: resources/raw_data/Restrict_use.csv
+
+OUTPUT_PATH:
+  1: ./resources/output/analysis-1
+  2: ./resources/output/analysis-2
+  3: ./resources/output/analysis-3
+  4: ./resources/output/analysis-4
+  5: ./resources/output/analysis-5
+  6: ./resources/output/analysis-6
+  7: ./resources/output/analysis-7
+  8: ./resources/output/analysis-8
+  9: ./resources/output/analysis-9
+  10: ./resources/output/analysis-10
+
+
+FILE_FORMAT:
+  write_format: csv
